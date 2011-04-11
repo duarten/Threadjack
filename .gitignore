@@ -1,0 +1,11 @@
+X64
+*.suo
+*.sdf
+*.obj
+*.opensdf
+ipch
+*.user
+_ReSharper.*
+*.csproj.user
+*.resharper.user
+*.ReSharper.user

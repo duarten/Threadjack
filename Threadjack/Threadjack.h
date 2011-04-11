@@ -3,7 +3,7 @@
 #include <windows.h>
 
 typedef VOID (__stdcall *PCALLBACK) (
-    __in LPVOID Parameter
+	__in LPVOID Parameter
 );
 
 FORCEINLINE
@@ -14,7 +14,7 @@ IsThreadInUserMode (
 	)
 {
 	const LONG Mask = CONTEXT_EXCEPTION_REPORTING 
-		 			| CONTEXT_EXCEPTION_ACTIVE 
+					| CONTEXT_EXCEPTION_ACTIVE 
 					| CONTEXT_SERVICE_ACTIVE;
 	
 	return (Mask & ContextFlags) == CONTEXT_EXCEPTION_REPORTING;
@@ -29,5 +29,5 @@ WINAPI
 HijackThread (
 	__in HANDLE Thread,
 	__in PCALLBACK Function,
-  	__in_opt PVOID Argument
+	__in_opt PVOID Argument
 	);

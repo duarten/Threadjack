@@ -8,7 +8,7 @@ HappyThread (
 	__in PVOID Argument 
 	) 
 {
-    volatile PBOOL Stop = (PBOOL) Argument;
+	volatile PBOOL Stop = (PBOOL) Argument;
 
 	do { 
 		YieldProcessor();
@@ -26,7 +26,7 @@ PanickingThread (
 	LONG Loops = (LONG) Argument;
 
 	do {
-        printf("+", Loops);
+		printf("+", Loops);
 	} while (--Loops > 0);
 }
 
@@ -35,12 +35,12 @@ __cdecl
 main (
 	__in ULONG argc,
 	__in_ecount(argc) PCHAR argv[]
-    )
+	)
 {	
 	BOOL Stop;
 	HANDLE Thread;
 
-    UNREFERENCED_PARAMETER(argc);
+	UNREFERENCED_PARAMETER(argc);
 	UNREFERENCED_PARAMETER(argv);
 		
 	Stop = FALSE;
@@ -49,20 +49,20 @@ main (
 
 	getchar();
 
-    //
-    // Try to hijack the thread. Spin until the thread leaves kernel-mode.
-    //
+	//
+	// Try to hijack the thread. Spin until the thread leaves kernel-mode.
+	//
 
 	while (!HijackThread(Thread, PanickingThread, (PVOID) 500)) {
-        YieldProcessor();
-    }
+		YieldProcessor();
+	}
 
 	getchar();
 
-    //
-    // Stop.
-    //
+	//
+	// Stop.
+	//
 
 	Stop = TRUE;
-    WaitForSingleObject(Thread, INFINITE);
+	WaitForSingleObject(Thread, INFINITE);
 }

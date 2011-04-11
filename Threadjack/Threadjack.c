@@ -104,7 +104,7 @@ SetNewContext (
 	//
 
 	NewContext.Rsp -= INTEGER_REG_SIZE + CONTROL_REG_SIZE + 
-					  HOME_SPACE_SIZE + sizeof(((PCONTEXT)0)->Rip);
+										HOME_SPACE_SIZE + sizeof(((PCONTEXT)0)->Rip);
 
 	//
 	// Arguments.
@@ -152,9 +152,9 @@ HijackThread (
 	//
 
 	Success = SuspendCount == 0
-		   && GetThreadContext(Thread, &OldContext)
-		   && (Event = CreateEvent(NULL, TRUE, FALSE, NULL)) != NULL 
-		   && SetNewContext(Thread, &OldContext, Event, Function, Argument);
+				 && GetThreadContext(Thread, &OldContext)
+				 && (Event = CreateEvent(NULL, TRUE, FALSE, NULL)) != NULL 
+				 && SetNewContext(Thread, &OldContext, Event, Function, Argument);
 
 	ResumeThread(Thread);
 

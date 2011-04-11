@@ -152,9 +152,9 @@ HijackThread (
     //
 
     Success = SuspendCount == 0
-            && GetThreadContext(Thread, &OldContext)
-            && (Event = CreateEvent(NULL, TRUE, FALSE, NULL)) != NULL 
-            && SetNewContext(Thread, &OldContext, Event, Function, Argument);
+           && GetThreadContext(Thread, &OldContext)
+           && (Event = CreateEvent(NULL, TRUE, FALSE, NULL)) != NULL 
+           && SetNewContext(Thread, &OldContext, Event, Function, Argument);
 
     ResumeThread(Thread);
 

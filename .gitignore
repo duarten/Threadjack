@@ -6,6 +6,5 @@ X64
 ipch
 *.user
 _ReSharper.*
-*.csproj.user
 *.resharper.user
-*.ReSharper.user
+*.log

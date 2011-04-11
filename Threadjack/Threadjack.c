@@ -96,7 +96,7 @@ SetNewContext (
     )
 {
     CONTEXT NewContext = *OldContext;
-    NewContext.Rip = (LONGLONG) Trampoline;
+    NewContext.Rip = (DWORD64) Trampoline;
 
     //
     // Reserve space on the stack for the integer and control registers + 
@@ -110,10 +110,10 @@ SetNewContext (
     // Arguments.
     //
 
-    NewContext.Rcx = (LONGLONG) OldContext;
-    NewContext.Rdx = (LONGLONG) Event;
-    NewContext.R8 = (LONGLONG) Function;
-    NewContext.R9 = (LONGLONG) Argument;
+    NewContext.Rcx = (DWORD64) OldContext;
+    NewContext.Rdx = (DWORD64) Event;
+    NewContext.R8 = (DWORD64) Function;
+    NewContext.R9 = (DWORD64) Argument;
 
     return SetThreadContext(Thread, &NewContext);
 }
